@@ -1,0 +1,62 @@
+{% extends "layout.twig" %}
+
+{% block title %}Dashboard - TicketFlow{% endblock %}
+
+
+
+{% block content %}
+<div class="dashboard-page">
+  <!-- Decorative Circles -->
+  <div class="circle circle-top-left"></div>
+  <div class="circle circle-bottom-right"></div>
+
+
+
+  <!-- Header -->
+  <header class="page-header">
+    <div class="container header-content">
+      <h1 class="logo">TicketFlow Dashboard</h1>
+      <nav class="nav-links">
+        <a href="/ticketflow-twig/tickets.php" class="nav-link">Manage Tickets</a>
+        <button onclick="logout()" class="btn-logout">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container main-content">
+    <h2 class="page-title">Dashboard Overview</h2>
+
+    <!-- Error Banner -->
+    <div id="errorBanner" class="error-banner" style="display: none;"></div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <p class="stat-label">Total Tickets</p>
+        <h3 class="stat-value" id="totalTickets">0</h3>
+      </div>
+
+      <div class="stat-card stat-open">
+        <p class="stat-label">Open</p>
+        <h3 class="stat-value" id="openTickets">0</h3>
+      </div>
+
+      <div class="stat-card stat-resolved">
+        <p class="stat-label">Resolved</p>
+        <h3 class="stat-value" id="closedTickets">0</h3>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-container">
+      <a href="/ticketflow-twig/tickets.php" class="btn-primary">
+        Go to Ticket Management
+      </a>
+    </div>
+  </main>
+</div>
+
+<script src="/ticketflow-twig/assets/js/auth.js"></script>
+<script src="/ticketflow-twig/assets/js/dashboard.js"></script>
+{% endblock %}

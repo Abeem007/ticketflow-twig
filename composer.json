@@ -1,0 +1,18 @@
+{
+    "name": "bimbookunade/ticketflow-twig",
+    "description": "Ticket management system with twig",
+    "autoload": {
+        "psr-4": {
+            "Bimbookunade\\TicketflowTwig\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bimbola",
+            "email": "toluokunade07@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}

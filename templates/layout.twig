@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}TicketFlow{% endblock %}</title>
+  <link rel="stylesheet" href="/ticketflow-twig/assets/css/style.css" />
+
+</head>
+
+<body>
+  {% if page == 'landing' %}
+    {% include 'header.twig' %}
+  {% endif %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'footer.twig' %}
+  
+  <div id="toast-container"></div>
+  
+  <script src="/ticketflow-twig/assets/js/auth.js"></script>
+  
+  {% if page == 'dashboard' %}
+    <script src="/ticketflow-twig/assets/js/dashboard.js"></script>
+  {% endif %}
+  
+  {% if page == 'tickets' %}
+    <script src="/ticketflow-twig/assets/js/tickets.js"></script>
+  {% endif %}
+  
+    
+  {% block scripts %}{% endblock %}
+</body>
+</html>

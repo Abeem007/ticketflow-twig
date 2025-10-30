@@ -1,0 +1,89 @@
+{% extends "layout.twig" %}
+
+{% block title %}Ticket Management - TicketFlow{% endblock %}
+
+{% block content %}
+<div class="tickets-page">
+  <!-- Decorative Circles -->
+  <div class="circle-top-right"></div>
+  <div class="circle-bottom-right"></div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast-notification"></div>
+
+  <!-- Header -->
+  <header class="tickets-header">
+    <div class="tickets-header-inner">
+      <nav class="tickets-nav">
+        <a href="/ticketflow-twig/dashboard.php" class="nav-link">
+          ← Back to Dashboard
+        </a>
+        <a href="/ticketflow-twig/index.php" class="nav-link">
+          🏠 Home
+        </a>
+        <h1>Ticket Management</h1>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="tickets-main">
+    <h2 class="tickets-page-title">Manage Your Tickets</h2>
+
+    <!-- Ticket Form -->
+    <div class="ticket-form-container">
+      <form id="ticketForm">
+        <div class="form-grid">
+          <!-- Title Field -->
+          <div class="form-field">
+            <label for="title">Title *</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Enter ticket title"
+              required
+            />
+            <span class="form-error" id="titleError"></span>
+          </div>
+
+          <!-- Status Field -->
+          <div class="form-field">
+            <label for="status">Status *</label>
+            <select id="status" name="status">
+              <option value="open">Open</option>
+              <option value="in_progress">In Progress</option>
+              <option value="closed">Closed</option>
+            </select>
+            <span class="form-error" id="statusError"></span>
+          </div>
+
+          <!-- Description Field -->
+          <div class="form-field form-field-full">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Optional: add a description"
+            ></textarea>
+            <span class="form-error" id="descriptionError"></span>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit" id="submitBtn">
+          Create Ticket
+        </button>
+      </form>
+    </div>
+
+    <!-- Tickets Grid -->
+    <div class="tickets-grid" id="ticketsList">
+      <p class="tickets-empty">No tickets yet. Create one above!</p>
+    </div>
+  </main>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/ticketflow-twig/assets/js/tickets.js"></script>
+{% endblock %}

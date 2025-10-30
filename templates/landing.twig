@@ -1,0 +1,38 @@
+{% extends "layout.twig" %}
+
+{% block title %}Home - TicketFlow{% endblock %}
+
+{% block content %}
+<section class="features">
+  <div class="features-container">
+  <div class= "features-header">
+  <h2>Built for teams & support agents</h2>
+    <p>
+      Powerful ticket management, fast search, and team assignments. 
+      Clear workflows and visibility across your entire organization.
+    </p>
+  </div>
+    
+
+    <div class="features-grid">
+      <article class="feature-card">
+        <div class="icon sky">⚙️</div>
+        <h3>Automations</h3>
+        <p>Route tickets automatically, reduce manual work.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="icon emerald">📊</div>
+        <h3>Analytics</h3>
+        <p>Get metrics on response times and resolution rates.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="icon amber">🔒</div>
+        <h3>Permissions</h3>
+        <p>Control access per role with secure sessions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+{% endblock %}

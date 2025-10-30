@@ -1,0 +1,30 @@
+ {% extends "layout.twig" %}
+{% block title %}Login | TicketFlow{% endblock %}
+{% block content %}
+<section class="auth-section">
+  <div class="auth-container">
+    <div id="toast" class="toast hidden"></div>
+    <h1 class="auth-title">Welcome Back</h1>
+    <form id="loginForm" class="auth-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" />
+        <p id="emailError" class="error-text"></p>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <p id="passwordError" class="error-text"></p>
+      </div>
+      <button type="submit" class="btn-primary2">Log In</button>
+    </form>
+    <p class="auth-switch">
+      Don’t have an account?
+      <a href="/ticketflow-twig/signup.php" class="link">Sign up</a>
+    </p>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+  <script src="/ticketflow-twig/assets/js/auth.js"></script>
+{% endblock %}

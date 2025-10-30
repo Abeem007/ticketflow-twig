@@ -1,0 +1,213 @@
+{# templates/hero.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketFlow</title>
+
+    {# Tailwind CDN (use your own build in production) #}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sky: {
+                50: '#f0f9ff',
+                600: '#0ea5e9',
+                700: '#0284c7',
+              },
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-gradient-to-b from-sky-50 to-white overflow-x-hidden">
+
+<header class="relative overflow-hidden">
+
+   
+    <div class="hidden md:block absolute -top-10 -right-10 w-48 h-48 rounded-full opacity-20 pointer-events-none"
+         style="background: radial-gradient(circle at 30% 30%, #7dd3fc, transparent 60%)"
+         aria-hidden="true"></div>
+
+    <div class="hidden md:block absolute -top-10 -left-10 w-48 h-48 rounded-full opacity-30 pointer-events-none"
+         style="background: radial-gradient(circle at 30% 30%, #7dd3fc, transparent 60%)"
+         aria-hidden="true"></div>
+
+    <div class="hidden sm:block absolute -left-6 -bottom-6 w-28 h-28 rounded-full opacity-30 pointer-events-none"
+         style="background: radial-gradient(circle at 30% 30%, #a78bfa, transparent 60%)"
+         aria-hidden="true"></div>
+
+    
+    <nav class="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12 py-4 flex justify-between items-center relative z-10">
+        <a href="/ticketflow-twig/index.php" class="text-2xl font-bold text-sky-600 pt-2">TicketFlow</a>
+
+        {# Desktop menu #}
+        <div class="hidden sm:flex gap-6 text-slate-700 font-medium pt-2">
+            <a href="/ticketflow-twig/index.php" class="hover:text-sky-600 transition-colors">Home</a>
+            <a href="/ticketflow-twig/login.php" class="hover:text-sky-600 transition-colors">Login</a>
+            <a href="/ticketflow-twig/signup.php" class="hover:text-sky-600 transition-colors">Signup</a>
+            <a href="/ticketflow-twig/dashboard.php" class="hover:text-sky-600 transition-colors">Dashboard</a>
+        </div>
+
+        {# Mobile menu button #}
+        <button id="menuToggle"
+                class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-sky-600 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                aria-label="Toggle menu">
+            <svg class="icon-menu h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg class="icon-close h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        {# Mobile dropdown #}
+        <div id="mobileMenu"
+             class="absolute top-full left-0 w-full bg-white shadow-md rounded-b-lg sm:hidden hidden">
+            <div class="flex flex-col space-y-6 py-7 px-6 text-slate-700 font-medium">
+                <a href="/ticketflow-twig/index.php">Home</a>
+                <a href="/ticketflow-twig/login.php">Login</a>
+                <a href="/ticketflow-twig/signup.php">Signup</a>
+                <a href="/ticketflow-twig/dashboard.php">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12">
+        <div class="pt-12 pb-20 lg:pt-24 lg:pb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                {# Left column #}
+                <div class="relative lg:col-span-7">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+                        TicketFlow
+                    </h1>
+                    <p class="mt-4 text-lg sm:text-xl text-slate-700 max-w-2xl">
+                        Manage support tickets with speed and clarity. Create, track,
+                        and resolve tickets promptly. All from a simple, elegant
+                        interface designed for teams of any size.
+                    </p>
+
+                    {# Buttons #}
+                    <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                        <a href="/ticketflow-twig/login.php"
+                           class="inline-flex items-center justify-center px-5 py-3 rounded-md border border-transparent text-base font-medium shadow-sm bg-white text-sky-700 hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500">
+                            Login
+                        </a>
+                        <a href="/ticketflow-twig/signup.php"
+                           class="inline-flex items-center justify-center px-5 py-3 rounded-md bg-sky-600 text-white font-medium shadow hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500">
+                            Get Started
+                        </a>
+                    </div>
+
+                  
+                    <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-xl">
+                        <div class="bg-white p-3 rounded-xl shadow-sm">
+                            <p class="text-xs text-slate-500">Teams</p>
+                            <p class="mt-1 font-semibold text-slate-900">12</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl shadow-sm">
+                            <p class="text-xs text-slate-500">Avg. response</p>
+                            <p class="mt-1 font-semibold text-slate-900">2h 15m</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl shadow-sm">
+                            <p class="text-xs text-slate-500">Active projects</p>
+                            <p class="mt-1 font-semibold text-slate-900">4</p>
+                        </div>
+                    </div>
+                </div>
+
+                {# Right column – ticket card #}
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-slate-500">Total tickets</p>
+                                <p class="text-2xl font-semibold text-slate-900">128</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-slate-500">Open</p>
+                                <p class="text-lg font-medium text-emerald-600">34</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 space-y-4">
+                            <div class="p-3 rounded-lg bg-slate-50">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-slate-900">Billing issue — Payment failed</p>
+                                        <p class="text-xs text-slate-500">Priority: Medium</p>
+                                    </div>
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+                                        open
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-lg bg-slate-50">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-slate-900">UI bug on dashboard</p>
+                                        <p class="text-xs text-slate-500">Priority: Low</p>
+                                    </div>
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">
+                                        in_progress
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ---------- Wave ---------- #}
+    <svg class="w-full" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,32 C220,120 440,0 720,48 C1000,96 1220,16 1440,64 L1440,120 L0,120 Z"
+              fill="#F8FAFC"/>
+    </svg>
+</header>
+
+{# ---------- Mobile menu script ---------- #}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('menuToggle');
+    const menu   = document.getElementById('mobileMenu');
+    const openIcon  = toggle.querySelector('.icon-menu');
+    const closeIcon = toggle.querySelector('.icon-close');
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden', !isOpen);
+      closeIcon.classList.toggle('hidden', isOpen);
+    });
+
+    // close on outside click
+    document.addEventListener('click', (e) => {
+      if (!menu.classList.contains('hidden') && !toggle.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    // close on link click
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
