@@ -43,14 +43,14 @@
 
     
     <nav class="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12 py-4 flex justify-between items-center relative z-10">
-        <a href="/ticketflow-twig/index.php" class="text-2xl font-bold text-sky-600 pt-2">TicketFlow</a>
+        <a href="/?page=loading" class="text-2xl font-bold text-sky-600 pt-2">TicketFlow</a>
 
         {# Desktop menu #}
         <div class="hidden sm:flex gap-6 text-slate-700 font-medium pt-2">
-            <a href="/" class="hover:text-sky-600 transition-colors">Home</a>
-            <a href="/login" class="hover:text-sky-600 transition-colors">Login</a>
-            <a href="/signup" class="hover:text-sky-600 transition-colors">Signup</a>
-            <a href="/dashboard" class="hover:text-sky-600 transition-colors">Dashboard</a>
+            <a href="/?page=landing" class="hover:text-sky-600 transition-colors">Home</a>
+            <a href="/?page=login" class="hover:text-sky-600 transition-colors">Login</a>
+            <a href="/page=signup" class="hover:text-sky-600 transition-colors">Signup</a>
+            <a href="/?page=dashboard" class="hover:text-sky-600 transition-colors">Dashboard</a>
         </div>
 
         {# Mobile menu button #}
@@ -71,10 +71,10 @@
         <div id="mobileMenu"
              class="absolute top-full left-0 w-full bg-white shadow-md rounded-b-lg sm:hidden hidden">
             <div class="flex flex-col space-y-6 py-7 px-6 text-slate-700 font-medium">
-                <a href="/">Home</a>
-                <a href="/login">Login</a>
-                <a href="/signup">Signup</a>
-                <a href="/dashboard">Dashboard</a>
+                <a href="/?page=landing">Home</a>
+                <a href="/?page=login">Login</a>
+                <a href="?page=signup">Signup</a>
+                <a href="/?page=dashboard">Dashboard</a>
             </div>
         </div>
     </nav>
@@ -95,11 +95,11 @@
 
                     {# Buttons #}
                     <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                        <a href="/login"
+                        <a href="/?page=login"
                            class="inline-flex items-center justify-center px-5 py-3 rounded-md border border-transparent text-base font-medium shadow-sm bg-white text-sky-700 hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500">
                             Login
                         </a>
-                        <a href="/signup"
+                        <a href="/?page=signup"
                            class="inline-flex items-center justify-center px-5 py-3 rounded-md bg-sky-600 text-white font-medium shadow hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500">
                             Get Started
                         </a>
