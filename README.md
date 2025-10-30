@@ -535,7 +535,7 @@ This project is for educational purposes.
 
 ## Contributing
 
-This is a course project and not open for contributions.
+This is a course project and  open for contributions.
 
 ---
 
