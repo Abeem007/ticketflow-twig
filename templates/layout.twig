@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}TicketFlow{% endblock %}</title>
-  <link rel="stylesheet" href="/ticketflow-twig/assets/css/style.css" />
+<!-- Tailwind CDN -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Your custom styles -->
+<link rel="stylesheet" href="/assets/css/style.css" />
+
 
 </head>
 
@@ -21,14 +26,14 @@
   
   <div id="toast-container"></div>
   
-  <script src="/ticketflow-twig/assets/js/auth.js"></script>
+  <script src="/assets/js/auth.js"></script>
   
   {% if page == 'dashboard' %}
-    <script src="/ticketflow-twig/assets/js/dashboard.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
   {% endif %}
   
   {% if page == 'tickets' %}
-    <script src="/ticketflow-twig/assets/js/tickets.js"></script>
+    <script src="/assets/js/tickets.js"></script>
   {% endif %}
   
     

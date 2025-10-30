@@ -1,31 +1,30 @@
 <?php
-require_once __DIR__ . '/config.php';
+require_once '../vendor/autoload.php';
 
-// Get the requested page
-$page = $_GET['page'] ?? 'landing';
+$loader = new \Twig\Loader\FilesystemLoader('../templates');
+$twig = new \Twig\Environment($loader);
 
-// Route mapping
-$routes = [
-    'landing' => 'landing.twig',
-    '' => 'landing.twig',
-    'login' => 'login.twig',
-    'signup' => 'signup.twig',
-    'dashboard' => 'dashboard.twig',
-    'tickets' => 'tickets.twig',
-];
+// Simple router
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// Get template
-$template = $routes[$page] ?? 'landing.twig';
-
-// Render
-try {
-    echo $twig->render($template, [
-        'page' => $page,
-        'base_url' => $baseUrl
-    ]);
-} catch (Exception $e) {
+switch ($uri) {
+  case '/':
+    echo $twig->render('landing.twig');
+    break;
+  case '/auth/login':
+    echo $twig->render('login.twig');
+    break;
+  case '/auth/signup':
+    echo $twig->render('signup.twig');
+    break;
+  case '/dashboard':
+    echo $twig->render('dashboard.twig');
+    break;
+  case '/tickets':
+    echo $twig->render('tickets.twig');
+    break;
+  default:
     http_response_code(404);
-    echo '<h1>404 - Page Not Found</h1>';
-    echo '<p>' . htmlspecialchars($e->getMessage()) . '</p>';
+    echo $twig->render('404.twig', ['path' => $uri]);
+    break;
 }
-?>

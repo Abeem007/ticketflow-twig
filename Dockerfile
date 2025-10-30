@@ -15,11 +15,21 @@ COPY . /var/www/html/
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Update Apache configuration
+# === APACHE CONFIG: Enable .htaccess ===
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-# Enable .htaccess
-RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+# Create custom virtual host
+RUN echo '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html\n\
+    <Directory /var/www/html>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+        Options -Indexes +FollowSymLinks\n\
+    </Directory>\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+# Enable the site
+RUN a2ensite 000-default.conf
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
