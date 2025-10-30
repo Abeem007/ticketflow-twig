@@ -15,6 +15,14 @@ RUN apt-get update && apt-get install -y \
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
+# Allow .htaccess overrides
+RUN echo "<Directory /var/www/html/ticketflow-twig>\n\
+    AllowOverride All\n\
+    Require all granted\n\
+</Directory>" > /etc/apache2/conf-available/twig-permissions.conf \
+    && a2enconf twig-permissions
+
+
 # Copy all project files into container
 COPY . /var/www/html/
 
