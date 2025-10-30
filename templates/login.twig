@@ -6,7 +6,7 @@
   <div class="auth-container">
     <div id="toast" class="toast hidden"></div>
     <h1 class="auth-title">Welcome Back</h1>
-    <form id="loginForm" action="{{ base_path ?? '' }}/auth/login" method="POST" class="auth-form">
+    <form id="loginForm" action="{{ base_path ?? '' }}/login.php" method="POST" class="auth-form">
       <div class="form-group">
         <label for="email">Email</label>
         <input id="email" name="email" type="email" />
@@ -21,7 +21,7 @@
     </form>
     <p class="auth-switch">
       Don’t have an account?
-      <a href={{ base_path }}/auth/signup class="link">Sign up</a>
+      <a href={{ base_path }}/signup.php class="link">Sign up</a>
     </p>
   </div>
 </section>

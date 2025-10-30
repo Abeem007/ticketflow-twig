@@ -9,7 +9,7 @@
     
     <h1 class="auth-title">Create an Account</h1>
     
-    <form id="signupForm" action="{{ base_path ?? '' }}/auth/signup" method="POST" class="auth-form">
+    <form id="signupForm" action="{{ base_path ?? '' }}/signup.php" method="POST" class="auth-form">
       <div class="form-group">
         <label for="email">Email</label>
         <input id="email" name="email" type="email" required />
@@ -33,7 +33,7 @@
     
     <p class="auth-switch">
       Already have an account?
-      <a href="{{ base_path }}/auth/login" class="link">Log in</a>
+      <a href="{{ base_path }}/login.php" class="link">Log in</a>
     </p>
   </div>
 </section>

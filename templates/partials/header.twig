@@ -48,9 +48,9 @@
     {# Desktop menu #}
     <div class="hidden sm:flex gap-6 text-slate-700 font-medium pt-2">
         <a href="{{ base_path }}/" class="hover:text-sky-600 transition-colors">Home</a>
-        <a href="{{ base_path }}/auth/login" class="hover:text-sky-600 transition-colors">Login</a>
-        <a href="{{ base_path }}/auth/signup" class="hover:text-sky-600 transition-colors">Signup</a>
-        <a href="{{ base_path }}/dashboard" class="hover:text-sky-600 transition-colors">Dashboard</a>
+        <a href="{{ base_path }}/login.php" class="hover:text-sky-600 transition-colors">Login</a>
+        <a href="{{ base_path }}/signup.php" class="hover:text-sky-600 transition-colors">Signup</a>
+        <a href="{{ base_path }}/dashboard.php" class="hover:text-sky-600 transition-colors">Dashboard</a>
     </div>
 
     {# Mobile menu button #}
@@ -72,9 +72,9 @@
          class="absolute top-full left-0 w-full bg-white shadow-md rounded-b-lg sm:hidden hidden">
         <div class="flex flex-col space-y-6 py-7 px-6 text-slate-700 font-medium">
             <a href="{{ base_path }}/">Home</a>
-            <a href="{{ base_path }}/auth/login">Login</a>
-            <a href="{{ base_path }}/auth/signup">Signup</a>
-            <a href="{{ base_path }}/dashboard">Dashboard</a>
+            <a href="{{ base_path }}/login.php">Login</a>
+            <a href="{{ base_path }}/signup.php">Signup</a>
+            <a href="{{ base_path }}/dashboard.php">Dashboard</a>
         </div>
     </div>
 </nav>
@@ -95,11 +95,11 @@
 
                     {# Buttons #}
                     <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                        <a href="/login"
+                        <a href="{{ base_path }}/login.php"
                            class="inline-flex items-center justify-center px-5 py-3 rounded-md border border-transparent text-base font-medium shadow-sm bg-white text-sky-700 hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500">
                             Login
                         </a>
-                        <a href="/signup"
+                        <a href="{{ base_path }}/signup.php"
                            class="inline-flex items-center justify-center px-5 py-3 rounded-md bg-sky-600 text-white font-medium shadow hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500">
                             Get Started
                         </a>

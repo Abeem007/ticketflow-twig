@@ -3,7 +3,7 @@
 function checkAuth() {
   const token = localStorage.getItem("ticketapp_session");
   if (!token) {
-    window.location.href = `${BASE_PATH}/auth/login`;
+    window.location.href = `${BASE_PATH}/login.php`;
     return false;
   }
   return true;
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("mock_user", JSON.stringify({ email, password }));
       showToast("Account created!", "success");
       setTimeout(() => {
-        window.location.href = `${BASE_PATH}/auth/login`;
+        window.location.href = `${BASE_PATH}/login.php`;
       }, 1500);
     });
   }
