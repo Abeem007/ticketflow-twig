@@ -1,16 +1,15 @@
-
-
 <?php
-session_start();
-require_once 'vendor/autoload.php';
 require_once 'config.php';
+require_once 'includes/auth.php';
 
-
-if (isset($_SESSION['user'])) {
-  header('Location: /ticketflow-twig/dashboard.php');
-  exit();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // TODO: Real signup (e.g., hash password, insert DB)
+    $_SESSION['user'] = ['email' => $_POST['email'] ?? ''];
+    header('Location: /ticketflow-twig/dashboard');
+    exit;
 }
 
 echo $twig->render('signup.twig', [
-  'page' => 'signup'
+    'page_title' => 'Sign Up | TicketFlow'
 ]);
+?>

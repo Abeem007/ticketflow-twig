@@ -1,23 +1,22 @@
 
+
 function checkAuth() {
   const token = localStorage.getItem("ticketapp_session");
   if (!token) {
-    window.location.href = "/login";
+    window.location.href = `${BASE_PATH}/auth/login`;
     return false;
   }
   return true;
 }
-
 
 function logout() {
   localStorage.removeItem("ticketapp_session");
   localStorage.removeItem("tickets");
   showToast("Logged out successfully", "success");
   setTimeout(() => {
-    window.location.href = "/";
+    window.location.href = `${BASE_PATH}/`;
   }, 1000);
 }
-
 
 function showToast(message, type = "success") {
   let toast = document.getElementById("toast");
@@ -34,8 +33,8 @@ function showToast(message, type = "success") {
   }, 3000);
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
+  /* ---------- LOGIN FORM ---------- */
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
@@ -65,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const mockUser = JSON.parse(
         localStorage.getItem("mock_user") ||
-        '{"email":"admin@test.com","password":"password"}'
+          '{"email":"admin@test.com","password":"password"}'
       );
 
       if (email === mockUser.email && password === mockUser.password) {
@@ -73,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("ticketapp_session", token);
         showToast("Login successful!", "success");
         setTimeout(() => {
-          window.location.href = "/dashboard";
+          window.location.href = `${BASE_PATH}/dashboard`;
         }, 1000);
       } else {
         showToast("Invalid email or password. Try again", "error");
@@ -81,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- SIGNUP FORM ---------- */
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
     signupForm.addEventListener("submit", (e) => {
@@ -104,7 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
           "Password required";
         valid = false;
       } else if (password.length < 6) {
-        document.getElementById("passwordError").textContent = "Password must be at least 6 characters";
+        document.getElementById("passwordError").textContent =
+          "Password must be at least 6 characters";
         valid = false;
       }
       if (password !== confirm) {
@@ -118,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-     
       if (localStorage.getItem("mock_user")) {
         const user = JSON.parse(localStorage.getItem("mock_user"));
         if (user.email === email) {
@@ -129,11 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.setItem("mock_user", JSON.stringify({ email, password }));
       showToast("Account created!", "success");
-      setTimeout(
-        () => (window.location.href = "/login"),
-        1500
-      );
+      setTimeout(() => {
+        window.location.href = `${BASE_PATH}/auth/login`;
+      }, 1500);
     });
   }
-
 });

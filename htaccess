@@ -1,21 +1,19 @@
-# .htaccess
-<IfModule mod_rewrite.c>
-    RewriteEngine On
+RewriteEngine On
 
-    # If the request is for a real file or directory, serve it directly
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^ - [L]
+# Route /auth/login to login.php, etc.
+RewriteRule ^auth/login$ login.php [L]
+RewriteRule ^auth/signup$ signup.php [L]
+RewriteRule ^dashboard$ dashboard.php [L]
+RewriteRule ^tickets$ tickets.php [L]
+RewriteRule ^logout$ logout.php [L]
 
-    # Otherwise, route everything to index.php
-    RewriteRule ^ index.php [QSA,L]
-</IfModule>
+# Serve index.php for root and 404 fallback
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
 
-# Prevent access to sensitive files
-<FilesMatch "^(\.env|composer\.json|composer\.lock|\.htaccess|\.gitignore)$">
+# Security: Deny access to sensitive files
+<Files ~ "^config\.php$">
     Order allow,deny
     Deny from all
-</FilesMatch>
-
-# Disable directory listing
-Options -Indexes
+</Files>

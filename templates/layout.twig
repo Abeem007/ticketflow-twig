@@ -1,42 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}TicketFlow{% endblock %}</title>
-<!-- Tailwind CDN -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
-
-<!-- Your custom styles -->
-<link rel="stylesheet" href="/assets/css/style.css" />
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site_name }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ base_path }}/assets/css/style.css">
+    {% block styles %}{% endblock %}
 </head>
-
 <body>
-  {% if page == 'landing' %}
-    {% include 'header.twig' %}
-  {% endif %}
-
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-
-  {% include 'footer.twig' %}
-  
-  <div id="toast-container"></div>
-  
-  <script src="/assets/js/auth.js"></script>
-  
-  {% if page == 'dashboard' %}
-    <script src="/assets/js/dashboard.js"></script>
-  {% endif %}
-  
-  {% if page == 'tickets' %}
-    <script src="/assets/js/tickets.js"></script>
-  {% endif %}
-  
+    {% include 'partials/header.twig' %}
     
-  {% block scripts %}{% endblock %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    {% include 'partials/footer.twig' %}
+    
+    <script src="{{ base_path }}/assets/js/auth.js"></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

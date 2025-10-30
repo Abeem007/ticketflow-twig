@@ -43,41 +43,41 @@
 
     
     <nav class="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12 py-4 flex justify-between items-center relative z-10">
-        <a href="/?page=loading" class="text-2xl font-bold text-sky-600 pt-2">TicketFlow</a>
+    <a href="{{ base_path }}/" class="text-2xl font-bold text-sky-600 pt-2">TicketFlow</a>
 
-        {# Desktop menu #}
-        <div class="hidden sm:flex gap-6 text-slate-700 font-medium pt-2">
-            <a href="/?page=landing" class="hover:text-sky-600 transition-colors">Home</a>
-            <a href="/?page=login" class="hover:text-sky-600 transition-colors">Login</a>
-            <a href="/page=signup" class="hover:text-sky-600 transition-colors">Signup</a>
-            <a href="/?page=dashboard" class="hover:text-sky-600 transition-colors">Dashboard</a>
+    {# Desktop menu #}
+    <div class="hidden sm:flex gap-6 text-slate-700 font-medium pt-2">
+        <a href="{{ base_path }}/" class="hover:text-sky-600 transition-colors">Home</a>
+        <a href="{{ base_path }}/auth/login" class="hover:text-sky-600 transition-colors">Login</a>
+        <a href="{{ base_path }}/auth/signup" class="hover:text-sky-600 transition-colors">Signup</a>
+        <a href="{{ base_path }}/dashboard" class="hover:text-sky-600 transition-colors">Dashboard</a>
+    </div>
+
+    {# Mobile menu button #}
+    <button id="menuToggle"
+            class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-sky-600 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
+            aria-label="Toggle menu">
+        <svg class="icon-menu h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg class="icon-close h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+
+    {# Mobile dropdown #}
+    <div id="mobileMenu"
+         class="absolute top-full left-0 w-full bg-white shadow-md rounded-b-lg sm:hidden hidden">
+        <div class="flex flex-col space-y-6 py-7 px-6 text-slate-700 font-medium">
+            <a href="{{ base_path }}/">Home</a>
+            <a href="{{ base_path }}/auth/login">Login</a>
+            <a href="{{ base_path }}/auth/signup">Signup</a>
+            <a href="{{ base_path }}/dashboard">Dashboard</a>
         </div>
-
-        {# Mobile menu button #}
-        <button id="menuToggle"
-                class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-sky-600 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
-                aria-label="Toggle menu">
-            <svg class="icon-menu h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-            <svg class="icon-close h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </button>
-
-        {# Mobile dropdown #}
-        <div id="mobileMenu"
-             class="absolute top-full left-0 w-full bg-white shadow-md rounded-b-lg sm:hidden hidden">
-            <div class="flex flex-col space-y-6 py-7 px-6 text-slate-700 font-medium">
-                <a href="/?page=landing">Home</a>
-                <a href="/?page=login">Login</a>
-                <a href="?page=signup">Signup</a>
-                <a href="/">Dashboard</a>
-            </div>
-        </div>
-    </nav>
+    </div>
+</nav>
 
     <div class="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12">
         <div class="pt-12 pb-20 lg:pt-24 lg:pb-32">
