@@ -1,4 +1,20 @@
-<Directory "/var/www/html/ticketflow-twig">
-    AllowOverride All
-    Require all granted
-</Directory>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect to index.php if file doesn't exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?page=$1 [QSA,L]
+</IfModule>
+
+# Security: Prevent access to sensitive files
+<FilesMatch "^(composer\.(json|lock)|\.gitignore|README\.md)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Enable following symlinks
+Options +FollowSymLinks

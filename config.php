@@ -1,7 +1,6 @@
 <?php
-// config.php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start(); // optional, not used for auth
+    session_start();
 }
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -16,9 +15,10 @@ $twig = new \Twig\Environment($loader, [
     'debug' => true
 ]);
 
-$baseUrl = '/ticketflow-twig';
+// Base URL - empty for production
+$baseUrl = '';
 
-// Helper: only for Twig context
 function isLoggedIn() {
-    return false; // We don't trust PHP session
+    return isset($_SESSION['user_id']) || isset($_SESSION['user']);
 }
+?>

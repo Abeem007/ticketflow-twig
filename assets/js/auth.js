@@ -2,7 +2,7 @@
 function checkAuth() {
   const token = localStorage.getItem("ticketapp_session");
   if (!token) {
-    window.location.href = "/ticketflow-twig/login.php";
+    window.location.href = "/login";
     return false;
   }
   return true;
@@ -14,7 +14,7 @@ function logout() {
   localStorage.removeItem("tickets");
   showToast("Logged out successfully", "success");
   setTimeout(() => {
-    window.location.href = "/ticketflow-twig/index.php";
+    window.location.href = "/";
   }, 1000);
 }
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("ticketapp_session", token);
         showToast("Login successful!", "success");
         setTimeout(() => {
-          window.location.href = "/ticketflow-twig/dashboard.php";
+          window.location.href = "/dashboard";
         }, 1000);
       } else {
         showToast("Invalid email or password. Try again", "error");
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("mock_user", JSON.stringify({ email, password }));
       showToast("Account created!", "success");
       setTimeout(
-        () => (window.location.href = "/ticketflow-twig/login.php"),
+        () => (window.location.href = "/login"),
         1500
       );
     });

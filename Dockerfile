@@ -1,42 +1,30 @@
-# Use PHP 8.2 with Apache
-FROM php:8.2-apache
-
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    zip \
-    git \
-    unzip \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+FROM php:8.4-apache
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Allow .htaccess overrides
-RUN echo "<Directory /var/www/html/ticketflow-twig>\n\
-    AllowOverride All\n\
-    Require all granted\n\
-</Directory>" > /etc/apache2/conf-available/twig-permissions.conf \
-    && a2enconf twig-permissions
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Set working directory
+WORKDIR /var/www/html
 
-# Copy all project files into container
+# Copy project files
 COPY . /var/www/html/
 
-# Set working directory to project folder
-WORKDIR /var/www/html/ticketflow-twig
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader
 
-# Tell Apache to use this directory as web root
-RUN sed -i 's#/var/www/html#/var/www/html/ticketflow-twig#g' /etc/apache2/sites-available/000-default.conf
+# Update Apache configuration
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-# Give Apache permissions
-RUN chown -R www-data:www-data /var/www/html
+# Enable .htaccess
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
-# Expose Apache port
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
+
 EXPOSE 80
 
-# Start Apache server
 CMD ["apache2-foreground"]
